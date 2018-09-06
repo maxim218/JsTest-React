@@ -1,14 +1,14 @@
 import React from 'react';
 import {render} from 'react-dom';
 import PrintTasksArray from "./components/PrintTasksArray";
-import ExersicePrinter from "./components/ExersicePrinter";
+import PrinterExersice from "./components/PrinterExersice";
 
 function PrintMyString() {
     return (
         <div>
             <PrintTasksArray/>
             <br/>
-            <ExersicePrinter/>
+            <PrinterExersice/>
         </div>
     )
 }

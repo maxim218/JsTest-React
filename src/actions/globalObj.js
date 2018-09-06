@@ -1,5 +1,5 @@
 const GLOBAL_OBJ = {};
 
-export default function getGlobalObj() {
+export default function globalObj() {
     return GLOBAL_OBJ;
 }
