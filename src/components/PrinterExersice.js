@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import globalObj from "../actions/globalObj";
 import PrintAreaField from "./PrintAreaField";
+import write from "../actions/write";
+import TesterStudent from "../actions/TesterStudent";
 
 const BUTTON_CLASS_NAME = "btn";
 
@@ -17,7 +19,9 @@ export default class PrinterExersice extends Component{
             content: undefined,
             number: undefined,
             flag: false,
-        }
+        };
+
+        write("PrinterExersice CREATED");
     }
 
     setContent(conditionParam, paramsParam, testsParam, contentParam, numberParam) {
@@ -36,8 +40,10 @@ export default class PrinterExersice extends Component{
     }
 
     runCode = () => {
-        const content = globalObj().areaNameSpace.getContent();
-        alert(content);
+        const studentCode = globalObj().areaNameSpace.getContent();
+        const testsArr = this.state.tests;
+        const testerStudent = new TesterStudent(studentCode, testsArr);
+        const resultTestArr = testerStudent.getTestingResult();
     };
 
     render() {

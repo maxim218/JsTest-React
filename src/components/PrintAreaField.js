@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import globalObj from "../actions/globalObj";
+import write from "../actions/write";
 
 export default class PrintAreaField extends Component {
     constructor(props) {
@@ -12,7 +13,9 @@ export default class PrintAreaField extends Component {
 
         this.state = {
             content: content
-        }
+        };
+
+        write("PrintAreaField CREATED");
     }
 
     onContentChange = (e) => {
@@ -20,6 +23,12 @@ export default class PrintAreaField extends Component {
             content: e.target.value
         });
     };
+
+    setContent(contentString) {
+        this.setState({
+            content: contentString.toString()
+        });
+    }
 
     getContent() {
         const content = this.state.content;

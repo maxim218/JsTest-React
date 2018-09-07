@@ -2,6 +2,8 @@ import React from 'react';
 import tasks from "../resources/tasks";
 import PrintTask from "./PrintTask";
 
+const TASK = "taskKeyNum";
+
 export default function PrintTasksArray() {
     const tasksArray = tasks();
 
@@ -11,7 +13,7 @@ export default function PrintTasksArray() {
             contentParam: element.toString(),
         };
 
-        return <PrintTask key={index} paramsObj={taskParam}/>
+        return <PrintTask key={TASK + index} paramsObj={taskParam}/>
     });
 
     return (
