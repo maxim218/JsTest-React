@@ -9,6 +9,7 @@ function PrintMyString() {
             <PrintTasksArray/>
             <br/>
             <PrinterExersice/>
+            <br/>
         </div>
     )
 }

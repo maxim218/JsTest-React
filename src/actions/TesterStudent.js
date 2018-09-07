@@ -9,19 +9,28 @@ export default class TesterStudent {
     }
 
     getTestingResult() {
-        const outputArr = [];
+        const resultObj = {
+            all: 0,
+            yes: 0,
+            no: 0,
+        };
 
         this.testsArr.forEach((test) => {
-            let result = undefined;
+            resultObj.all++;
 
+            let result = undefined;
             // eslint-disable-next-line
             eval(this.studentCode.toString() + " result = main(" + test.params.join(",") +");");
 
             if(test.type === "int") {
-                outputArr.push(TesterStudent.assertInteger(result, test.answer));
+                if(TesterStudent.assertInteger(result, test.answer)) {
+                    resultObj.yes++;
+                } else {
+                    resultObj.no++;
+                }
             }
         });
 
-        return outputArr;
+        return resultObj;
     }
 }

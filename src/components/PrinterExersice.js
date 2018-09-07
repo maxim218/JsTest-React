@@ -3,6 +3,7 @@ import globalObj from "../actions/globalObj";
 import PrintAreaField from "./PrintAreaField";
 import write from "../actions/write";
 import TesterStudent from "../actions/TesterStudent";
+import printTestResult from "../actions/printTestResult";
 
 const BUTTON_CLASS_NAME = "btn";
 
@@ -43,7 +44,8 @@ export default class PrinterExersice extends Component{
         const studentCode = globalObj().areaNameSpace.getContent();
         const testsArr = this.state.tests;
         const testerStudent = new TesterStudent(studentCode, testsArr);
-        const resultTestArr = testerStudent.getTestingResult();
+        const resultObj = testerStudent.getTestingResult();
+        printTestResult(resultObj);
     };
 
     render() {
