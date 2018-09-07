@@ -1,3 +1,8 @@
+import write from "./write";
+
+const LINE_LONG = "---------------------------------------------";
+const LINE_SHORT = "-------------------------";
+
 export default class TesterStudent {
     constructor(studentCodeParam, testsArrParam) {
         this.studentCode = studentCodeParam;
@@ -8,6 +13,20 @@ export default class TesterStudent {
         return a === b;
     }
 
+    static addYes(resultObj) {
+        resultObj.yes++;
+        write("Ответ верный");
+    }
+
+    static addNo(resultObj, errorExistsFlag) {
+        resultObj.no++;
+        if(errorExistsFlag === false) {
+            write("Ответ НЕ верный");
+        } else {
+            write("Ошибка во время выполнения");
+        }
+    }
+
     getTestingResult() {
         const resultObj = {
             all: 0,
@@ -15,21 +34,42 @@ export default class TesterStudent {
             no: 0,
         };
 
+        write(LINE_LONG);
+
         this.testsArr.forEach((test) => {
+            write(LINE_SHORT);
+
             resultObj.all++;
-
+            let errorFound = false;
             let result = undefined;
-            // eslint-disable-next-line
-            eval(this.studentCode.toString() + " result = main(" + test.params.join(",") +");");
 
-            if(test.type === "int") {
-                if(TesterStudent.assertInteger(result, test.answer)) {
-                    resultObj.yes++;
-                } else {
-                    resultObj.no++;
-                }
+            write("Input: " + test.params);
+            write("NormalResult: " + test.answer);
+
+            try {
+                // eslint-disable-next-line
+                eval(this.studentCode.toString() + " result = main(" + test.params.join(",") + ");");
+                write("UserCodeAnswer: " + result);
+            } catch (err) {
+                errorFound = true;
             }
+
+            if(errorFound === false) {
+                if (test.type === "int") {
+                    if (TesterStudent.assertInteger(result, test.answer)) {
+                        TesterStudent.addYes(resultObj);
+                    } else {
+                        TesterStudent.addNo(resultObj, false);
+                    }
+                }
+            } else {
+                TesterStudent.addNo(resultObj, true);
+            }
+
+            write(LINE_SHORT);
         });
+
+        write(LINE_LONG);
 
         return resultObj;
     }
