@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 import globalObj from "../actions/globalObj";
+import PrintAreaField from "./PrintAreaField";
+
+const BUTTON_CLASS_NAME = "btn";
 
 export default class PrinterExersice extends Component{
     constructor(props) {
@@ -32,6 +35,11 @@ export default class PrinterExersice extends Component{
         return "main (" + this.state.params.join(", ") + ")";
     }
 
+    runCode = () => {
+        const content = globalObj().areaNameSpace.getContent();
+        alert(content);
+    };
+
     render() {
         if(this.state.flag === false) {
             return (
@@ -41,12 +49,11 @@ export default class PrinterExersice extends Component{
             );
         }
 
-        const textAreaId = "mainInputTextArea";
-        const textAreaText = "function " + this.getFunctionDetermination() + " {\n\n}\n";
+        const content = "function " + this.getFunctionDetermination() + " {\n\n}\n";
 
-        function areaChangedFunction(event) {
-            document.getElementById(textAreaId).setState({value: event.target.value});
-        }
+        const obj = {
+            content: content.toString()
+        };
 
         return (
             <div>
@@ -61,8 +68,9 @@ export default class PrinterExersice extends Component{
                     {this.getFunctionDetermination()}
                 </p>
                 <h3>Ваш код:</h3>
-                <textarea id={textAreaId} value={textAreaText} onChange={areaChangedFunction}/>
+                <PrintAreaField paramsObj={obj}/>
                 <br/>
+                <div className={BUTTON_CLASS_NAME} onClick={this.runCode} align="center">Запустить</div>
             </div>
         );
     }
