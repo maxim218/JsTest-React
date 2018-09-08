@@ -234,7 +234,34 @@ const EXERSICES_ARRAY = [
                 ],
                 answer: [30, 50, 70],
             },
-
+            {
+                type: "intarr",
+                params: [
+                    "[-7, -2, -5, 50, 40]"
+                ],
+                answer: [-14, -4, -10, 100, 80],
+            },
+            {
+                type: "intarr",
+                params: [
+                    "[]"
+                ],
+                answer: [],
+            },
+            {
+                type: "intarr",
+                params: [
+                    "[2, 0, 3, 0, 4, 0, 15, 0, 17]"
+                ],
+                answer: [4, 0, 6, 0, 8, 0, 30, 0, 34],
+            },
+            {
+                type: "intarr",
+                params: [
+                    "[25, 75]"
+                ],
+                answer: [50, 150],
+            },
         ]
     },
 ];

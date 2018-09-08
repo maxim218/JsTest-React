@@ -84,6 +84,14 @@ export default class TesterStudent {
                         TesterStudent.addNo(resultObj, false);
                     }
                 }
+
+                if (test.type === "intarr") {
+                    if(TesterStudent.assertIntegerArray(result, test.answer)) {
+                        TesterStudent.addYes(resultObj);
+                    } else {
+                        TesterStudent.addNo(resultObj, false);
+                    }
+                }
             } else {
                 TesterStudent.addNo(resultObj, true);
             }
