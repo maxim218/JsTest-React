@@ -185,6 +185,42 @@ const EXERSICES_ARRAY = [
             },
         ]
     },
+    {
+        condition: "Функция main получает в качестве параметра массив m. Функция должна возвращать длину полученного массива.",
+        params: [
+            "m",
+        ],
+        tests: [
+            {
+                type: "int",
+                params: [
+                    "[10, 20, 30, 40]"
+                ],
+                answer: 4,
+            },
+            {
+                type: "int",
+                params: [
+                    "[500, 400, 300, 200, 100, 50]"
+                ],
+                answer: 6,
+            },
+            {
+                type: "int",
+                params: [
+                    "[]"
+                ],
+                answer: 0,
+            },
+            {
+                type: "int",
+                params: [
+                    "[12, -63, 25]"
+                ],
+                answer: 3,
+            },
+        ]
+    },
 ];
 
 export default function exersices() {
