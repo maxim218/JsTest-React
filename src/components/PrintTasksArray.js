@@ -23,7 +23,7 @@ export default function PrintTasksArray() {
                     <h2>Список задач</h2>
                 </div>
                 <div className="card-body">
-                    <div>
+                    <div style={{overflowY: "scroll", height: "350px"}}>
                         <ul className="list-group" data-offset="0">
                             {arr}
                         </ul>

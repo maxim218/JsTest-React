@@ -8,7 +8,9 @@ function PrintMyString() {
         <div>
             <PrintTasksArray/>
             <br/>
-            <PrinterExersice/>
+            <div>
+                <PrinterExersice/>
+            </div>
             <br/>
         </div>
     )
