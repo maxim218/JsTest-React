@@ -13,6 +13,28 @@ export default class TesterStudent {
         return a === b;
     }
 
+    static assertIntegerArray(arrFirst, arrSecond) {
+        if(Array.isArray(arrFirst) === false) {
+            return false;
+        }
+
+        if(Array.isArray(arrSecond) === false) {
+            return false;
+        }
+
+        if(arrFirst.length !== arrSecond.length) {
+            return false;
+        }
+
+        for(let i = 0; i < arrFirst.length; i++) {
+            if(arrFirst[i] !== arrSecond[i]) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     static addYes(resultObj) {
         resultObj.yes++;
         write("Ответ верный");

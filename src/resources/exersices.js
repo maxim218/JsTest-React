@@ -221,6 +221,22 @@ const EXERSICES_ARRAY = [
             },
         ]
     },
+    {
+        condition: "Функция main получает в качестве параметра массив целых чисел q. Функция должна возвращать массив, в котором все элементы увеличены в два раза.",
+        params: [
+            "q",
+        ],
+        tests: [
+            {
+                type: "intarr",
+                params: [
+                    "[15, 25, 35]"
+                ],
+                answer: [30, 50, 70],
+            },
+
+        ]
+    },
 ];
 
 export default function exersices() {
