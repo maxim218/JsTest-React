@@ -38,7 +38,14 @@ export default class PrintAreaField extends Component {
     render() {
         return(
             <div>
-                <textarea onChange={this.onContentChange} value={this.state.content}/>
+                <div className="input-group">
+                    <div className="input-group-prepend">
+                        <span className="input-group-text">
+                            <span className="lead">&nbsp;&nbsp;&nbsp;Код&nbsp;&nbsp;&nbsp;</span>
+                        </span>
+                    </div>
+                    <textarea rows="7" className="form-control" aria-label="Код" onChange={this.onContentChange} value={this.state.content}/>
+                </div>
             </div>
         );
     }

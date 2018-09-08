@@ -1,8 +1,6 @@
 import React from 'react';
 import taskClick from "../actions/taskClick";
 
-const CLASS_NAME = "taskClass";
-
 export default function PrintTask(props) {
     const {paramsObj} = props;
 
@@ -14,10 +12,10 @@ export default function PrintTask(props) {
     }
 
     return (
-        <div className={CLASS_NAME} onClick={elementClickFunction}>
+        <li className="list-group-item" style={{cursor: "pointer"}} onClick={elementClickFunction}>
             <b>Номер:</b> {numberParam}
             <br/>
             <b>Название:</b> {contentParam}
-        </div>
+        </li>
     )
 }

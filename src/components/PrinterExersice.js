@@ -5,8 +5,6 @@ import write from "../actions/write";
 import TesterStudent from "../actions/TesterStudent";
 import printTestResult from "../actions/printTestResult";
 
-const BUTTON_CLASS_NAME = "btn";
-
 export default class PrinterExersice extends Component{
     constructor(props) {
         super(props);
@@ -52,7 +50,7 @@ export default class PrinterExersice extends Component{
         if(this.state.flag === false) {
             return (
                 <div>
-                    <h2>Задача не выбрана</h2>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
                 </div>
             );
         }
@@ -65,20 +63,28 @@ export default class PrinterExersice extends Component{
 
         return (
             <div>
-                <h2>Номер: {this.state.number + 1}</h2>
-                <h3>Название: {this.state.content}</h3>
-                <p>
-                    <b>Условие: </b>
-                    {this.state.condition}
-                </p>
-                <p>
-                    <b>Функция: </b>
-                    {this.getFunctionDetermination()}
-                </p>
-                <h3>Ваш код:</h3>
-                <PrintAreaField paramsObj={obj}/>
-                <br/>
-                <div className={BUTTON_CLASS_NAME} onClick={this.runCode} align="center">Запустить</div>
+                <div className="card bg-light">
+                    <div className="card-header">
+                        <h2>Описание задачи</h2>
+                    </div>
+                    <div className="card-body">
+                        <h3>Номер: {this.state.number + 1}</h3>
+                        <h3>Название: {this.state.content}</h3>
+                        <br/>
+                        <p>
+                            <b>Условие: </b>
+                            {this.state.condition}
+                        </p>
+                        <br/>
+                        <p>
+                            <b>Функция: </b>
+                            {this.getFunctionDetermination()}
+                        </p>
+                        <PrintAreaField paramsObj={obj}/>
+                        <br/>
+                        <button type="button" className="btn btn-primary btn-lg btn-block" onClick={this.runCode}>Запустить</button>
+                    </div>
+                </div>
             </div>
         );
     }
