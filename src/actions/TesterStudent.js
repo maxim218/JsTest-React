@@ -54,6 +54,29 @@ export default class TesterStudent {
         return a === b;
     }
 
+    static assertObjectsArray(arrFirst, arrSecond) {
+        if(Array.isArray(arrFirst) === false) {
+            return false;
+        }
+
+        if(Array.isArray(arrSecond) === false) {
+            return false;
+        }
+
+        if(arrFirst.length !== arrSecond.length) {
+            return false;
+        }
+
+        for(let i = 0; i < arrFirst.length; i++) {
+            const b = TesterStudent.assertObjects(arrFirst[i], arrSecond[i]);
+            if(b === false) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     static assertIntegerArray(arrFirst, arrSecond) {
         if(Array.isArray(arrFirst) === false) {
             return false;
@@ -136,6 +159,14 @@ export default class TesterStudent {
 
                 if(test.type === "obj") {
                     if(TesterStudent.assertObjects(result, test.answer)) {
+                        TesterStudent.addYes(resultObj);
+                    } else {
+                        TesterStudent.addNo(resultObj, false);
+                    }
+                }
+
+                if(test.type === "objarr") {
+                    if(TesterStudent.assertObjectsArray(result, test.answer)) {
                         TesterStudent.addYes(resultObj);
                     } else {
                         TesterStudent.addNo(resultObj, false);

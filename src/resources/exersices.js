@@ -357,6 +357,63 @@ const EXERSICES_ARRAY = [
             },
         ]
     },
+    {
+        condition: "Функция main получает в качестве параметра массив объектов m. Функция должна вернуть массив, в котором сортировка идёт в начале по полю x, после чего по полю y.",
+        params: [
+            "m",
+        ],
+        tests: [
+            {
+                type: "objarr",
+                params: [
+                    "[{x: 7, y: 20}, {x: 2, y: 80}, {x: 5, y: 30}]"
+                ],
+                answer: [{x: 2, y: 80}, {x: 5, y: 30}, {x: 7, y: 20}],
+            },
+            {
+                type: "objarr",
+                params: [
+                    "[]"
+                ],
+                answer: [],
+            },
+            {
+                type: "objarr",
+                params: [
+                    "[{x: 5, y: 14}, {x: 5, y: 12}, {x: 7, y: 18}, {x: 7, y: 16}]"
+                ],
+                answer: [{x: 5, y: 12}, {x: 5, y: 14}, {x: 7, y: 16}, {x: 7, y: 18}],
+            },
+            {
+                type: "objarr",
+                params: [
+                    "[{x: 2, y: 4}, {x: 2, y: 4}, {x: 2, y: 3}, {x: 2, y: 4}]"
+                ],
+                answer: [{x: 2, y: 3}, {x: 2, y: 4}, {x: 2, y: 4}, {x: 2, y: 4}],
+            },
+            {
+                type: "objarr",
+                params: [
+                    "[{x: 5, y: 6}, {x: 3, y: 4}, {x: 1, y: 2}]"
+                ],
+                answer: [{x: 1, y: 2}, {x: 3, y: 4}, {x: 5, y: 6}],
+            },
+            {
+                type: "objarr",
+                params: [
+                    "[{x: 18, y: 2}, {x: 15, y: 3}, {x: 15, y: 2}, {x: 15, y: 4}, {x: 17, y: 2}, {x: 15, y: 1}]"
+                ],
+                answer: [{x: 15, y: 1}, {x: 15, y: 2}, {x: 15, y: 3}, {x: 15, y: 4}, {x: 17, y: 2}, {x: 18, y: 2}],
+            },
+            {
+                type: "objarr",
+                params: [
+                    "[{x: 8, y: 4}]"
+                ],
+                answer: [{x: 8, y: 4}],
+            },
+        ]
+    },
 ];
 
 export default function exersices() {
