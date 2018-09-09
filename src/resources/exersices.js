@@ -1,3 +1,7 @@
+/**
+ * массив заданий (содержит полную формулировку и тесты)
+ * @type {*[]}
+ */
 const EXERSICES_ARRAY = [
     {
         condition: "Функция main получает в качестве параметров два целых числа a и b. Функция должна возвращать сумму полученных чисел.",
@@ -416,6 +420,10 @@ const EXERSICES_ARRAY = [
     },
 ];
 
+/**
+ * функция выдаёт массив заданий
+ * @returns {*[]}
+ */
 export default function exersices() {
     return EXERSICES_ARRAY;
 }

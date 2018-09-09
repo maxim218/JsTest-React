@@ -4,9 +4,16 @@ import PrintTask from "./PrintTask";
 
 const TASK = "taskKeyNum";
 
+/**
+ * функция для вывода массива названий заданий
+ * @returns {*}
+ * @constructor
+ */
 export default function PrintTasksArray() {
+    // получаем массив заданий
     const tasksArray = tasks();
 
+    // получаем на массив с разметкой
     const arr = tasksArray.map((element, index) => {
         const taskParam = {
             numberParam: parseInt(index.toString(), 10) + 1,
@@ -16,6 +23,7 @@ export default function PrintTasksArray() {
         return <PrintTask key={TASK + index} paramsObj={taskParam}/>
     });
 
+    // выводим массив с разметкой на экран
     return (
         <div>
             <div className="card bg-light">

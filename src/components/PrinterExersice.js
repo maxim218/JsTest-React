@@ -5,12 +5,21 @@ import write from "../actions/write";
 import TesterStudent from "../actions/TesterStudent";
 import printTestResult from "../actions/printTestResult";
 
+/**
+ * класс для полного вывода задания
+ */
 export default class PrinterExersice extends Component{
+    /**
+     * конструктор
+     * @param props
+     */
     constructor(props) {
         super(props);
 
+        // передаём область видимости для общего доступа
         globalObj().namespace = this;
 
+        // задаём начальное состояние
         this.state = {
             condition: undefined,
             params: undefined,
@@ -23,7 +32,16 @@ export default class PrinterExersice extends Component{
         write("PrinterExersice CREATED");
     }
 
+    /**
+     * метод для изменения состояния
+     * @param conditionParam
+     * @param paramsParam
+     * @param testsParam
+     * @param contentParam
+     * @param numberParam
+     */
     setContent(conditionParam, paramsParam, testsParam, contentParam, numberParam) {
+        // задаём новое состояние
         this.setState({
             condition: conditionParam,
             params: paramsParam,
@@ -34,19 +52,36 @@ export default class PrinterExersice extends Component{
         });
     }
 
+    /**
+     * метод для генерации строки, описывающей название функции
+     * @returns {string}
+     */
     getFunctionDetermination() {
         return "main (" + this.state.params.join(", ") + ")";
     }
 
+    /**
+     * метод вызывается при нажатии на кнопку запуска
+     */
     runCode = () => {
+        // получаем код из поля ввода
         const studentCode = globalObj().areaNameSpace.getContent();
+        // получаем список тестов
         const testsArr = this.state.tests;
+        // создаём экземпляр тестирующего класса
         const testerStudent = new TesterStudent(studentCode, testsArr);
+        // получаем результат тестирования
         const resultObj = testerStudent.getTestingResult();
+        // выводим результат тестирования
         printTestResult(resultObj);
     };
 
+    /**
+     * метод для отрисовки задания
+     * @returns {*}
+     */
     render() {
+        // если задание не выбрано
         if(this.state.flag === false) {
             return (
                 <div>
@@ -55,12 +90,14 @@ export default class PrinterExersice extends Component{
             );
         }
 
+        // получаем шаблон функции
         const content = "function " + this.getFunctionDetermination() + " {\n\n}\n";
 
         const obj = {
             content: content.toString()
         };
 
+        // выводим задание на экран
         return (
             <div>
                 <div className="card bg-light">

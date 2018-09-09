@@ -1,3 +1,7 @@
+/**
+ * массив названий заданий
+ * @type {string[]}
+ */
 const TASKS_ARRAY = [
     "Сумма чисел",
     "Наибольшее число",
@@ -10,6 +14,10 @@ const TASKS_ARRAY = [
     "Упорядочивание массива объектов",
 ];
 
+/**
+ * функция возвращает массив названий заданий
+ * @returns {string[]}
+ */
 export default function tasks() {
     return TASKS_ARRAY;
 }
