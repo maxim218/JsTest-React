@@ -314,6 +314,49 @@ const EXERSICES_ARRAY = [
             },
         ]
     },
+    {
+        condition: "Функция main получает в качестве параметра объект w. Функция должна вернуть объект, у которого все поля увеличены в пять раз.",
+        params: [
+            "w",
+        ],
+        tests: [
+            {
+                type: "obj",
+                params: [
+                    "{x: 2, y: 3, z: 4}"
+                ],
+                answer: {x: 10, y: 15, z: 20},
+            },
+            {
+                type: "obj",
+                params: [
+                    "{}"
+                ],
+                answer: {},
+            },
+            {
+                type: "obj",
+                params: [
+                    "{a: 300, b: 100}"
+                ],
+                answer: {a: 1500, b: 500},
+            },
+            {
+                type: "obj",
+                params: [
+                    "{w: 50, e: 70}"
+                ],
+                answer: {e: 350, w: 250},
+            },
+            {
+                type: "obj",
+                params: [
+                    "{p: 20}"
+                ],
+                answer: {p: 100},
+            },
+        ]
+    },
 ];
 
 export default function exersices() {

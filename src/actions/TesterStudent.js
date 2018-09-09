@@ -3,10 +3,51 @@ import write from "./write";
 const LINE_LONG = "---------------------------------------------";
 const LINE_SHORT = "-------------------------";
 
+function fieldsNumber(obj) {
+    let number = 0;
+    // eslint-disable-next-line
+    for(let key in obj) {
+        number++;
+    }
+    return number;
+}
+
 export default class TesterStudent {
     constructor(studentCodeParam, testsArrParam) {
         this.studentCode = studentCodeParam;
         this.testsArr = testsArrParam;
+    }
+
+    static assertObjects(obj1, obj2) {
+        if(obj1 === null || obj1 === undefined) {
+            return false;
+        }
+
+        if(obj2 === null || obj2 === undefined) {
+            return false;
+        }
+
+        if(typeof(obj1) !== "object") {
+            return false;
+        }
+
+        if(typeof(obj2) !== "object") {
+            return false;
+        }
+
+        if(fieldsNumber(obj1) !== fieldsNumber(obj2)) {
+            return false;
+        }
+
+        let ok = true;
+
+        for(let key in obj1) {
+            if(obj1[key.toString()] !== obj2[key.toString()]) {
+                ok = false;
+            }
+        }
+
+        return ok;
     }
 
     static assertInteger(a, b) {
@@ -87,6 +128,14 @@ export default class TesterStudent {
 
                 if (test.type === "intarr") {
                     if(TesterStudent.assertIntegerArray(result, test.answer)) {
+                        TesterStudent.addYes(resultObj);
+                    } else {
+                        TesterStudent.addNo(resultObj, false);
+                    }
+                }
+
+                if(test.type === "obj") {
+                    if(TesterStudent.assertObjects(result, test.answer)) {
                         TesterStudent.addYes(resultObj);
                     } else {
                         TesterStudent.addNo(resultObj, false);
